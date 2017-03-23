@@ -1,5 +1,5 @@
 var Bugzilla = {
-  BASE_URL: "https://api-dev.bugzilla.mozilla.org/latest",
+  BASE_URL: "https://bugzilla.mozilla.org/bzapi/",
   BASE_UI_URL: "https://bugzilla.mozilla.org",
   DEFAULT_OPTIONS: {
     method: "GET"
@@ -15,7 +15,7 @@ var Bugzilla = {
         values = [values];
       values.forEach(
         function(value) {
-          parts.push(encodeURIComponent(name) + "=" + encodeURIComponent(value));
+          parts.push(encodeURI(name) + "=" + encodeURI(value));
         });
     }
     return parts.join("&");
@@ -27,14 +27,10 @@ var Bugzilla = {
     options = newOptions;
 
     function onLoad() {
-      var response = JSON.parse(xhr.responseText);
-      if (!response.error)
-        options.success(response);
-      // TODO: We should really call some kind of error callback
-      // if this didn't work.
+      options.success(JSON.parse(xhr.responseText));
     }
 
-    var xhr = options.xhr ? options.xhr : new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     var url = this.BASE_URL + options.url;
 
     if (options.data)
@@ -47,12 +43,12 @@ var Bugzilla = {
     return xhr;
   },
   getBug: function Bugzilla_getBug(id, cb) {
-    return this.ajax({url: "/bug/" + id,
-                      success: cb});
+    this.ajax({url: "/bug/" + id,
+               success: cb});
   },
   search: function Bugzilla_search(query, cb) {
-    return this.ajax({url: "/bug",
-                      data: query,
-                      success: cb});
+    this.ajax({url: "/bug",
+               data: query,
+               success: cb});
   }
 };
