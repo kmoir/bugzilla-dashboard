@@ -1,8 +1,7 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-  <link rel="stylesheet" type="text/css" media="all"
-        href="css/jquery-ui.css" />
+  
   <link rel="stylesheet" type="text/css" media="all"
         href="css/main.css" />
   <link rel="stylesheet" type="text/css" media="all"
@@ -22,7 +21,6 @@
     <div id="assigned-bugs"><h2>Assigned Bugs</h2></div>
     <div id="fixed-bugs"><h2>Recently Fixed Bugs</h2></div>
     <div id="code-reviews"><h2>Things To Review</h2></div>
-    <div id="cc-bugs"><h2>CC'd Bugs</h2></div>
     <div id="reported-bugs"><h2>Reported Bugs</h2></div>
   </div>
 </div>
@@ -118,7 +116,8 @@
 </div>
 </body>
 <!-- Base Scripts -->
-<script src="js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="js/require.js"></script>
 <script>
 $(window).ready(function() {
@@ -130,7 +129,6 @@ $(window).ready(function() {
   ];
 
   var scripts = [
-    "js/jquery-ui.js",
     "js/bugzilla.js"
   ];
 

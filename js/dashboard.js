@@ -2,12 +2,8 @@ var domainRe = /@.*$/;
 var bugspamRe = /^bugspam\./;
 function get_nick_from_email(email) {
     var nick = email.replace(domainRe,"");
-    if (nick == "winter2718") {
-	nick = "mrrrgn";
-    } else if (nick == "bugspam.Callek") {
+    if (nick == "bugspam.Callek") {
         nick = "Callek";
-    } else if (nick == "mgervasini") {
-        nick = "mgerva";
     }
     return nick;
 }
@@ -177,15 +173,15 @@ $(window).ready(
 	myUsername = myUsernames[i];
         $("#who").text(myUsername);
 
-    var defaults = {
-      changed_after: timeAgo(MS_PER_WEEK * 14)
-    };
+	var defaults = {
+	    changed_after: timeAgo(MS_PER_WEEK * 14)
+        };
 
-    report("#assigned-bugs"+i,
-           {status: ["NEW", "UNCONFIRMED", "ASSIGNED", "REOPENED"],
-            email1: myUsername,
-            email1_type: "equals",
-            email1_assigned_to: 1});
+        report("#assigned-bugs"+i,
+	       {status: ["NEW", "UNCONFIRMED", "ASSIGNED", "REOPENED"],
+	        email1: myUsername,
+	        email1_type: "equals",
+	        email1_assigned_to: 1});
 
     //    report("#fixed-bugs",
     //       {resolution: ["FIXED"],

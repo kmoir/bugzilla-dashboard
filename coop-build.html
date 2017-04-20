@@ -40,13 +40,13 @@
   <form><textarea class="data"></textarea></form>
 </div>
 </body>
-<script src="js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="js/date-utils.js"></script>
 <script src="js/bugzilla.js"></script>
 <script src="js/cache.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/reports.js"></script>
-<script src="js/jquery-firefly-0.2.js "></script>
 <script type="text/javascript">
   var manager = "coop-build";
   var myUsernames = reports[manager];
@@ -57,7 +57,9 @@
   }
   $('div#directreports').append(fragment);
   $(function() {
-    $("#sortable").sortable();
+    $("#sortable").sortable({
+        appendTo: document.body
+    });
     $("#sortable").disableSelection();
   });
 </script>

@@ -35,6 +35,7 @@ var Bugzilla = {
 
     if (options.data)
       url = url + "?" + this.queryString(options.data);
+    //alert('url: ' + url);
     xhr.open(options.method, url);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");

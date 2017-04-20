@@ -593,16 +593,12 @@ Require.modules["app/ui/dashboard"] = function(exports, require) {
 
     $(selector).find("h2").addClass("loading");
     
-    xhrQueue.enqueue(
-      function() {
-        return bugzilla.search(
-          newTerms,
-          function(response) {
-            cache.set(cacheKey, response.bugs);
-            showBugs($(selector), response.bugs);
-            $(selector).find("h2").removeClass("loading");
-          });
-      });
+    bugzilla.search(newTerms,
+                    function(response) {
+                      cache.set(cacheKey, response.bugs);
+                      showBugs($(selector), response.bugs);
+                      $(selector).find("h2").removeClass("loading");
+                    });
   }
 
   const MS_PER_HOUR = 1000 * 60 * 60;
@@ -610,7 +606,7 @@ Require.modules["app/ui/dashboard"] = function(exports, require) {
   const MS_PER_WEEK = MS_PER_DAY * 7;
 
   var defaults = {
-    changed_after: dateUtils.timeAgo(MS_PER_WEEK * 14)
+    changed_after: dateUtils.timeAgo(MS_PER_WEEK * 7)
   };
 
   function update(myUsername, isAuthenticated, forceUpdate) {
@@ -637,15 +633,15 @@ Require.modules["app/ui/dashboard"] = function(exports, require) {
             email2_type: "not_equals",
             email2_assigned_to: 1});
 
-    report("#cc-bugs", key, forceUpdate,
-           {status: ["NEW", "UNCONFIRMED", "ASSIGNED", "REOPENED"],
-            email1: myUsername,
-            email1_type: "equals",
-            email1_cc: 1,
-            email2: myUsername,
-            email2_type: "not_equals",
-            email2_assigned_to: 1,
-            email2_creator: 1});
+//    report("#cc-bugs", key, forceUpdate,
+//           {status: ["NEW", "UNCONFIRMED", "ASSIGNED", "REOPENED"],
+//            email1: myUsername,
+//            email1_type: "equals",
+//            email1_cc: 1,
+//            email2: myUsername,
+//            email2_type: "not_equals",
+//            email2_assigned_to: 1,
+//            email2_creator: 1});
 
     report("#fixed-bugs", key, forceUpdate,
            {resolution: ["FIXED"],
