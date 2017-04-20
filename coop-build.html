@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" media="all"
+        href="css/dashboard.css" />
+  <title>coop's bugzilla dashboard - build peers</title>
+</head>
+<body>
+<div id="reports">
+  <h1>coop's bugzilla dashboard - build peers</h1>
+  <div id="directreports" class="container">
+  </div>
+</div>
+<div id="templates">
+  <div class="bug-tooltip">
+    <div>
+      <span class="priority"></span>
+      <span class="severity"></span>
+    </div>
+    <div>
+      <span class="product"></span>
+      <span class="component"></span>
+    </div>
+    <div>Created <span class="age"></span></div>
+  </div>
+  <table id="sortable" class="bugs">
+    <tr class="header">
+      <th>Summary</th>
+      <th>Last&nbsp;Changed</th>
+      <th>Priority</th>
+    </tr>
+    <tr class="bug-row">
+      <td class="summary"></td>
+      <td class="last-changed"></td>
+      <td class="priority"></td>
+    </tr>
+  </table>
+</div>
+<div id="form-cache">
+  <form><textarea class="data"></textarea></form>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/date-utils.js"></script>
+<script src="js/bugzilla.js"></script>
+<script src="js/cache.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/jquery-firefly-0.2.js "></script>
+<script type="text/javascript">
+  var manager = "coop-build";
+  var myUsernames = reports[manager];
+  var l = myUsernames.length;
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < l; i++) {
+    fragment.appendChild(generate_bug_div(i, myUsernames[i]));
+  }
+  $('div#directreports').append(fragment);
+  $(function() {
+    $("#sortable").sortable();
+    $("#sortable").disableSelection();
+  });
+</script>
+</html>
