@@ -3,11 +3,11 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" type="text/css" media="all"
         href="css/dashboard.css" />
-  <title>coop's bugzilla dashboard - build peers</title>
+  <title>TaskCluster Bugzilla Dashboard</title>
 </head>
 <body>
 <div id="reports">
-  <h1>coop's bugzilla dashboard - build peers</h1>
+  <h1>TaskCluster Bugzilla Dashboard</h1>
   <div id="directreports" class="container">
   </div>
 </div>
@@ -48,7 +48,7 @@
 <script src="js/dashboard.js"></script>
 <script src="js/reports.js"></script>
 <script type="text/javascript">
-  var manager = "coop-build";
+  var manager = "taskcluster";
   var myUsernames = reports[manager];
   var l = myUsernames.length;
   var fragment = document.createDocumentFragment();
@@ -57,9 +57,7 @@
   }
   $('div#directreports').append(fragment);
   $(function() {
-    $("#sortable").sortable({
-        appendTo: document.body
-    });
+    $("#sortable").sortable();
     $("#sortable").disableSelection();
   });
 </script>

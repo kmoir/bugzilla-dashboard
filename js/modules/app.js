@@ -3,7 +3,7 @@ Require.modules["app/loader"] = function(exports, require) {
     var cache;
     if ("cache" in options)
       cache = options.cache;
-    else 
+    else
       cache = require("cache/html5").create(
         "bugzilla-dashboard-cache",
         options.window.sessionStorage
@@ -390,6 +390,9 @@ Require.modules["app/ui"] = function(exports, require) {
           document.title = title;
           $("#header .title").text(title);
         }
+        var heading = $("#code-reviews h2").text();
+        $("#code-reviews h2").empty();
+        $("#code-reviews h2").append("<a target=\"_blank\" href=\"https://bugzilla.mozilla.org/request.cgi?action=queue&group=requestee&requestee=" + user.username + "\">Things To Review</a>");
       });
   };
 
@@ -527,7 +530,7 @@ Require.modules["app/ui/dashboard"] = function(exports, require) {
         row.addClass(bug.severity);
       }
       row.find(".last-changed").attr("data-last-change",
-                                     bug.last_change_time);      
+                                     bug.last_change_time);
       table.append(row);
     }
 
@@ -592,7 +595,7 @@ Require.modules["app/ui/dashboard"] = function(exports, require) {
     }
 
     $(selector).find("h2").addClass("loading");
-    
+
     bugzilla.search(newTerms,
                     function(response) {
                       cache.set(cacheKey, response.bugs);
