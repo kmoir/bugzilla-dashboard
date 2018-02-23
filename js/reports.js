@@ -5,7 +5,8 @@ var reports = {
         "gps@mozilla.com",
         "mshal@mozilla.com",
         "sheehan@mozilla.com",
-        "ted@mielczarek.org"
+        "ted@mielczarek.org",
+        "kmoir@mozilla.com"
     ],
     'taskcluster': [
         "alesilva241@gmail.com",

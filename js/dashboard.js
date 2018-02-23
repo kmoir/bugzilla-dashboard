@@ -38,7 +38,7 @@ $(window).ready(
 
 	var asum = tracking_re.test(a.summary);
 	var bsum = tracking_re.test(b.summary);
-	
+
 	if (asum == true) {
 	    if (bsum == true) {
                 if (alc < blc)
@@ -167,8 +167,8 @@ $(window).ready(
           myUsernames = match[1].split(',');
        }
     } else {
-        myUsernames.push("coop@mozilla.com");
-    }        
+        myUsernames.push("kmoir@mozilla.com");
+    }
     for (var i in myUsernames) {
 	myUsername = myUsernames[i];
         $("#who").text(myUsername);
